@@ -32,8 +32,31 @@ public class DogCategories {
 
     }};
 
+    private ArrayList showbreeds = new ArrayList() {{
+        add("Golden Retriever");
+        add("Beagle");
+        add("Redbone");
+        add("Cairn");
+        add("Cardigan");
+        add("Chow");
+        add("Pomeranian");
+        add("Great Pyrenees");
+        add("EntleBucher");
+        add("Appenzeller");
+        add("Collie");
+        add("Labrador Retriever");
+        add("Lhasa");
+        add("Kuvasz");
+        add("Shih Tzu");
+
+    }};
+
     public ArrayList getBreeds() {
         return breeds;
+    }
+
+    public ArrayList getShowBreeds() {
+        return showbreeds;
     }
 
     private ArrayList randomIndexList = new ArrayList(){{
@@ -56,8 +79,10 @@ public class DogCategories {
 
         Collections.shuffle(breeds);
 //        for (int i=0; i< breeds.size(); i++) {
-//            System.out.println(breeds.get(i));
+//            System.out.println( "inner "+ breeds.get(i));
 //        }
+//
+//        System.out.println("============================DOne");
     }
 
 
