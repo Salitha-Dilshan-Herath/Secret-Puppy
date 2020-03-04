@@ -14,21 +14,21 @@ public class DogCategories {
 
     //MARK: Variables
     private ArrayList breeds = new ArrayList() {{
-        add("Golden Retriever");
-        add("Beagle");
-        add("Redbone");
-        add("Cairn");
-        add("Cardigan");
-        add("Chow");
-        add("Pomeranian");
-        add("Great Pyrenees");
-        add("EntleBucher");
-        add("Appenzeller");
-        add("Collie");
-        add("Labrador Retriever");
-        add("Lhasa");
-        add("Cairn");
-        add("Shih-Tzu");
+        add("goldenretriever");
+        add("beagle");
+        add("redbone");
+        add("cairn");
+        add("cardigan");
+        add("chow");
+        add("pomeranian");
+        add("greatpyrenees");
+        add("entlebucher");
+        add("appenzeller");
+        add("collie");
+        add("labradorretriever");
+        add("lhasa");
+        add("cairn");
+        add("shihtzu");
 
     }};
 
@@ -59,19 +59,27 @@ public class DogCategories {
         return showbreeds;
     }
 
-    private ArrayList randomIndexList = new ArrayList(){{
+    private ArrayList imageRandomIndexList = new ArrayList(){{
 
         add(1);add(2);add(3);add(4);add(5);add(6);add(7);add(8);add(9);add(10);
 
     }};
 
-    private int currentIndex = 0;
+    private int currentImageIndex = 0;
+
+    private ArrayList breedRandomIndexList = new ArrayList(){{
+
+        add(1);add(2);add(3);add(4);add(5);add(6);add(7);add(8);add(9);add(10);
+
+    }};
+
+    private int currentBreedIndex = 0;
 
 
     //MARK: Constructor
     private DogCategories () {
 
-        Collections.shuffle(randomIndexList);
+        Collections.shuffle(imageRandomIndexList);
     }
 
 
@@ -88,16 +96,31 @@ public class DogCategories {
 
     public String getRandomDogImageName(String breed){
 
-        if (currentIndex == randomIndexList.size()) {
-            currentIndex = 0;
-            Collections.shuffle(randomIndexList);
+        if (currentImageIndex == imageRandomIndexList.size()) {
+            currentImageIndex = 0;
+            Collections.shuffle(imageRandomIndexList);
         }
 
 
 
-        int index = (int) randomIndexList.get(currentIndex++);
+        int index = (int) imageRandomIndexList.get(currentImageIndex++);
 
         return breed + "_" + index;
     }
 
+    public String getRandomBreedName() {
+
+        if (currentBreedIndex == breedRandomIndexList.size()) {
+            currentBreedIndex = 0;
+            Collections.shuffle(breedRandomIndexList);
+            System.out.println("resuffl breeds =================================");
+        }
+
+
+
+        String name =  (String) breeds.get( (int) breedRandomIndexList.get(currentBreedIndex++));
+
+        return name;
+
+    }
 }
