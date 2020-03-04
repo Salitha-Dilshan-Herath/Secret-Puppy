@@ -80,17 +80,7 @@ public class DogCategories {
     private DogCategories () {
 
         Collections.shuffle(imageRandomIndexList);
-    }
-
-
-    public void shuffleBreedList () {
-
         Collections.shuffle(breeds);
-//        for (int i=0; i< breeds.size(); i++) {
-//            System.out.println( "inner "+ breeds.get(i));
-//        }
-//
-//        System.out.println("============================DOne");
     }
 
 
@@ -100,8 +90,6 @@ public class DogCategories {
             currentImageIndex = 0;
             Collections.shuffle(imageRandomIndexList);
         }
-
-
 
         int index = (int) imageRandomIndexList.get(currentImageIndex++);
 
