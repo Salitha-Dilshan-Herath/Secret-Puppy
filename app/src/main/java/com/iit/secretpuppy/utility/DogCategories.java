@@ -27,7 +27,7 @@ public class DogCategories {
         add("collie");
         add("labradorretriever");
         add("lhasa");
-        add("cairn");
+        add("kuvasz");
         add("shihtzu");
 
     }};
@@ -69,7 +69,7 @@ public class DogCategories {
 
     private ArrayList breedRandomIndexList = new ArrayList(){{
 
-        add(1);add(2);add(3);add(4);add(5);add(6);add(7);add(8);add(9);add(10);
+        add(0); add(1);add(2);add(3);add(4);add(5);add(6);add(7);add(8);add(9);add(10);add(11);add(12);add(13);add(14);
 
     }};
 

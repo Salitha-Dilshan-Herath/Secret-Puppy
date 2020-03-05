@@ -9,21 +9,24 @@ import android.widget.TextView;
 
 import com.iit.secretpuppy.R;
 
-public class IdentifyBreedWrongMessage extends Dialog {
+public class IdentifyBreedWrongWithDetailMessage extends Dialog {
 
     private Activity current;
     private Button btnOk;
     private TextView txtCorrect;
 
-    public IdentifyBreedWrongMessage(Activity current) {
+    private String correctBreed;
+
+    public IdentifyBreedWrongWithDetailMessage(Activity current , String breed) {
         super(current);
         this.current = current;
+        this.correctBreed = breed;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.identify_breed_wrong_message);
+        setContentView(R.layout.identify_breed_wrong_message_detail);
 
         setupview();
 
@@ -34,11 +37,12 @@ public class IdentifyBreedWrongMessage extends Dialog {
         btnOk = findViewById(R.id.btnOk);
         txtCorrect = findViewById(R.id.txtCorrectName);
 
+        txtCorrect.setText("Correct answer is " + correctBreed);
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                IdentifyBreedWrongMessage.this.dismiss();
+                IdentifyBreedWrongWithDetailMessage.this.dismiss();
             }
         });
     }

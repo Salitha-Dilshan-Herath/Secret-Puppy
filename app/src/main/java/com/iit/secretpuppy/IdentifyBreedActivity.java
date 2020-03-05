@@ -1,12 +1,9 @@
 package com.iit.secretpuppy;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iit.secretpuppy.Alerts.IdentifyBreedCorrectMessage;
-import com.iit.secretpuppy.Alerts.IdentifyBreedWrongMessage;
+import com.iit.secretpuppy.Alerts.IdentifyBreedWrongWithDetailMessage;
 import com.iit.secretpuppy.utility.DogCategories;
 import com.iit.secretpuppy.utility.CustomPlaceholderSelectedSpinnerAdapter;
 import com.iit.secretpuppy.utility.Utility;
@@ -74,9 +71,6 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                     //selected breed convert to string
                     String selected_name = (String) spinnerBreed.getSelectedItem();
 
-                    System.out.println("selected name " + selected_name.toLowerCase());
-                    System.out.println("random breed " + randomBreed);
-
                     txtResult.setVisibility(View.VISIBLE);
                     spinnerBreed.setVisibility(View.INVISIBLE);
 
@@ -89,7 +83,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
                     }else {
 
-                        IdentifyBreedWrongMessage identifyBreedWrongMessage = new IdentifyBreedWrongMessage(IdentifyBreedActivity.this, randomBreed);
+                        IdentifyBreedWrongWithDetailMessage identifyBreedWrongMessage = new IdentifyBreedWrongWithDetailMessage(IdentifyBreedActivity.this, randomBreed);
                         identifyBreedWrongMessage.show();
                         txtResult.setText("Your answer is wrong");
                         txtResult.setTextColor(Color.RED);

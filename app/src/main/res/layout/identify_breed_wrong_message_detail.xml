@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="230dp"
     android:background="#FFEB3B"
     android:orientation="vertical">
 
@@ -14,18 +14,18 @@
         android:layout_height="0dp"
         android:layout_marginStart="70dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="70dp"
         android:layout_marginRight="70dp"
         android:gravity="center"
         android:text="WRONG"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#DF180A"
+        android:textColor="#CA1212"
         android:textSize="36sp"
         android:textStyle="bold"
         app:fontFamily="sans-serif-black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".4"
+        app:layout_constraintHeight_percent=".3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,9 +33,23 @@
         android:id="@+id/btnOk"
         android:layout_width="260dp"
         android:layout_height="47dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:background="#FF5722"
         android:text="@android:string/ok"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/txtCorrectName" />
+
+    <TextView
+        android:id="@+id/txtCorrectName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Correct answer is "
+        android:textColor="#3F51B5"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
