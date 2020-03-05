@@ -29,8 +29,9 @@ public class SearchBreed extends AppCompatActivity {
 
     private ArrayList<Drawable> imgArray = new ArrayList<Drawable>();
     private int currentPage = 0;
-    private Timer swipeTimer = new Timer();
+
     final Handler handler = new Handler();
+    Timer swipeTimer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +71,13 @@ public class SearchBreed extends AppCompatActivity {
 
             }
         });
+
+        btnStop.setVisibility(View.INVISIBLE);
     }
 
     private void setupSlider(){
+
+        btnStop.setVisibility(View.VISIBLE);
 
         imgArray.clear();
         String searchText = txtSearch.getText().toString();
@@ -110,12 +115,13 @@ public class SearchBreed extends AppCompatActivity {
         };
 
 
-        swipeTimer = new Timer();
+
         swipeTimer.schedule(new TimerTask() {
             @Override
             public void run() {
                 handler.post(Update);
             }
-        }, 2500, 2500);
+        }, 5000, 5000);
+
     }
 }
