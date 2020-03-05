@@ -13,8 +13,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.iit.secretpuppy.Alerts.IdentifyBreedCorrectMessage;
-import com.iit.secretpuppy.Alerts.IdentifyBreedWrongWithDetailMessage;
+import com.iit.secretpuppy.alerts.IdentifyBreedCorrectMessage;
+import com.iit.secretpuppy.alerts.IdentifyBreedWrongWithDetailMessage;
 import com.iit.secretpuppy.utility.DogCategories;
 import com.iit.secretpuppy.utility.CustomPlaceholderSelectedSpinnerAdapter;
 import com.iit.secretpuppy.utility.Utility;
@@ -69,7 +69,9 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                     }
 
                     //selected breed convert to string
+
                     String selected_name = (String) spinnerBreed.getSelectedItem();
+                    selected_name        = selected_name.replaceAll("\\s+","");
 
                     txtResult.setVisibility(View.VISIBLE);
                     spinnerBreed.setVisibility(View.INVISIBLE);

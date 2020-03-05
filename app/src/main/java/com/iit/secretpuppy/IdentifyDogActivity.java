@@ -5,7 +5,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.iit.secretpuppy.Alerts.IdentifyBreedCorrectMessage;
-import com.iit.secretpuppy.Alerts.IdentifyBreedWrongMessage;
+import com.iit.secretpuppy.alerts.IdentifyBreedCorrectMessage;
+import com.iit.secretpuppy.alerts.IdentifyBreedWrongMessage;
 import com.iit.secretpuppy.utility.DogCategories;
 import com.iit.secretpuppy.utility.Utility;
 
@@ -30,6 +29,8 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
     private ImageView img3;
     private Button    btnSubmit;
     private TextView  txtBreedName;
+    private TextView  txtResult;
+
     private ConstraintLayout viwImgBack1;
     private ConstraintLayout viwImgBack2;
     private ConstraintLayout viwImgBack3;
@@ -60,6 +61,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         img3         = findViewById(R.id.imgDog3);
         btnSubmit    = findViewById(R.id.btnSubmit);
         txtBreedName = findViewById(R.id.txtBreedName);
+        txtResult    = findViewById(R.id.txtLevel2Result);
         viwImgBack1  = findViewById(R.id.constriantImgBack1);
         viwImgBack2  = findViewById(R.id.constriantImgBack2);
         viwImgBack3  = findViewById(R.id.constriantImgBack3);
@@ -78,6 +80,8 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         imageViewsBackgroundList.add(viwImgBack2);
         imageViewsBackgroundList.add(viwImgBack3);
 
+        txtResult.setVisibility(View.INVISIBLE);
+
         //set images to image view
         for (int i = 0; i < 3 ; i++){
             imageViewsList.get(i).setOnClickListener(this);
@@ -90,7 +94,6 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         String name     = randomBreedList.get(randomIndex);
         String cap_name = name.substring(0, 1).toUpperCase() + name.substring(1);
         txtBreedName.setText(cap_name);
-
 
     }
 
@@ -125,6 +128,8 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
                 return;
             }
 
+            txtResult.setVisibility(View.VISIBLE);
+
             if (selectedIndex == randomIndex) {
 
                 IdentifyBreedCorrectMessage identifyBreedCorrectMessage = new IdentifyBreedCorrectMessage(this);
@@ -133,6 +138,8 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
                 imageViewsBackgroundList.get(randomIndex).setBackgroundColor(Color.GREEN);
                 imageViewsBackgroundList.get(randomIndex).startAnimation(Utility.flashingAnumation());
 
+                txtResult.setText("Your answer is correct");
+                txtResult.setTextColor(Color.GREEN);
 
             }else {
 
@@ -142,12 +149,19 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
                 imageViewsBackgroundList.get(selectedIndex).setBackgroundColor(Color.RED);
                 imageViewsBackgroundList.get(selectedIndex).startAnimation(Utility.flashingAnumation());
 
+                txtResult.setText("Your answer is wrong");
+                txtResult.setTextColor(Color.RED);
 
             }
 
 
+            img1.setClickable(false);
+            img2.setClickable(false);
+            img3.setClickable(false);
+
             btnSubmit.setText("Next");
             submitButtonState = 1;
+
         } else {
 
             Intent intent = getIntent();

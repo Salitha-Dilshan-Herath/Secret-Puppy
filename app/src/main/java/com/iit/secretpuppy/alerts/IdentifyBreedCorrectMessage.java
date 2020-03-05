@@ -1,21 +1,18 @@
-package com.iit.secretpuppy.Alerts;
+package com.iit.secretpuppy.alerts;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
 import com.iit.secretpuppy.R;
 
-public class IdentifyBreedWrongMessage extends Dialog {
+public class IdentifyBreedCorrectMessage extends Dialog {
 
     private Activity current;
     private Button btnOk;
-    private TextView txtCorrect;
 
-    public IdentifyBreedWrongMessage(Activity current) {
+    public IdentifyBreedCorrectMessage(Activity current) {
         super(current);
         this.current = current;
     }
@@ -23,7 +20,7 @@ public class IdentifyBreedWrongMessage extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.identify_breed_wrong_message);
+        setContentView(R.layout.identify_breed_correct_message);
 
         setupview();
 
@@ -32,13 +29,11 @@ public class IdentifyBreedWrongMessage extends Dialog {
     private void setupview() {
 
         btnOk = findViewById(R.id.btnOk);
-        txtCorrect = findViewById(R.id.txtCorrectName);
-
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                IdentifyBreedWrongMessage.this.dismiss();
+                IdentifyBreedCorrectMessage.this.dismiss();
             }
         });
     }
