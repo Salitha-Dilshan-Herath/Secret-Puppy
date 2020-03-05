@@ -28,8 +28,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent=".6"
-            app:layout_constraintHeight_percent=".4"
+            app:layout_constraintWidth_percent=".7"
+            app:layout_constraintHeight_percent=".8"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
