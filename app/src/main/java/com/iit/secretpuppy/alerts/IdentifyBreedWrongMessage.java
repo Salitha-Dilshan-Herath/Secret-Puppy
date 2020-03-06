@@ -1,6 +1,7 @@
 package com.iit.secretpuppy.alerts;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 
 import com.iit.secretpuppy.R;
 
-public class IdentifyBreedWrongMessage extends Dialog {
+public class IdentifyBreedWrongMessage extends AlertDialog {
 
     private Activity current;
     private Button btnOk;
@@ -30,6 +31,8 @@ public class IdentifyBreedWrongMessage extends Dialog {
     }
 
     private void setupview() {
+
+        this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
         btnOk = findViewById(R.id.btnOk);
         txtCorrect = findViewById(R.id.txtCorrectName);

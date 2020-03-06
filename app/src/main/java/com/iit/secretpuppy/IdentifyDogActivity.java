@@ -92,9 +92,8 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         Random ran      = new Random();
         randomIndex     = ran.nextInt(3) ;
         String name     = randomBreedList.get(randomIndex);
-
-        String cap_name = name.substring(0, 1).toUpperCase() + name.substring(1);
-        txtBreedName.setText(cap_name);
+        String show_name = Utility.getShowBreedName(name);
+        txtBreedName.setText(show_name);
 
     }
 
@@ -133,6 +132,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
 
             System.out.println(selectedIndex);
             System.out.println(randomIndex);
+
             if (selectedIndex == randomIndex) {
 
                 IdentifyBreedCorrectMessage identifyBreedCorrectMessage = new IdentifyBreedCorrectMessage(this);

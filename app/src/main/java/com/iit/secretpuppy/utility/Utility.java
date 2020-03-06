@@ -23,4 +23,9 @@ public class Utility {
 
         return anim;
     }
+
+    public static String getShowBreedName (String formattingString) {
+
+        return (String) DogCategories.getInstance().getShowBreeds().get(DogCategories.getInstance().getBreeds().indexOf(formattingString));
+    }
 }

@@ -1,6 +1,7 @@
 package com.iit.secretpuppy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -26,6 +27,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     private ImageView imgDog;
     private Button    btnNext;
     private TextView  txtResult;
+    private ConstraintLayout constraintLayoutTimer;
 
     private String randomBreed = "";
     private ArrayAdapter<String> adapter;
@@ -43,13 +45,15 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     private void setupView() {
 
         //bind ui component to local varible
-        spinnerBreed = findViewById(R.id.spinner_breeds);
-        imgDog       = findViewById(R.id.imgDog);
-        btnNext      = findViewById(R.id.btnSubmit);
-        txtResult    = findViewById(R.id.txtResult);
+        spinnerBreed          = findViewById(R.id.spinner_breeds);
+        imgDog                = findViewById(R.id.imgDog);
+        btnNext               = findViewById(R.id.btnSubmit);
+        txtResult             = findViewById(R.id.txtResult);
+        constraintLayoutTimer = findViewById(R.id.constraintLayoutTimer);
 
         txtResult.setVisibility(View.INVISIBLE);
         spinnerBreed.setVisibility(View.VISIBLE);
+        constraintLayoutTimer.setVisibility(View.VISIBLE);
 
         //load image first time
         loadImage();
@@ -69,7 +73,6 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                     }
 
                     //selected breed convert to string
-
                     String selected_name = (String) spinnerBreed.getSelectedItem();
                     selected_name        = selected_name.replaceAll("\\s+","");
 
@@ -80,12 +83,13 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                     if (selected_name.toLowerCase().equals(randomBreed)) {
                         IdentifyBreedCorrectMessage identifyBreedCorrectMessage = new IdentifyBreedCorrectMessage(IdentifyBreedActivity.this);
                         identifyBreedCorrectMessage.show();
+
                         txtResult.setText("Your answer is correct");
                         txtResult.setTextColor(Color.GREEN);
 
                     }else {
 
-                        IdentifyBreedWrongWithDetailMessage identifyBreedWrongMessage = new IdentifyBreedWrongWithDetailMessage(IdentifyBreedActivity.this, randomBreed);
+                        IdentifyBreedWrongWithDetailMessage identifyBreedWrongMessage = new IdentifyBreedWrongWithDetailMessage(IdentifyBreedActivity.this, Utility.getShowBreedName(randomBreed));
                         identifyBreedWrongMessage.show();
                         txtResult.setText("Your answer is wrong");
                         txtResult.setTextColor(Color.RED);

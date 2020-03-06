@@ -22,17 +22,19 @@ import java.util.TimerTask;
 
 public class SearchBreed extends AppCompatActivity {
 
+    //MARK: UI Components
     private AutoCompleteTextView txtSearch;
     private ViewPager viewPagerSlider;
     private Button btnSearch;
     private Button btnStop;
 
+    //MARK: Instance variables
     private ArrayList<Drawable> imgArray = new ArrayList<Drawable>();
-    private int currentPage = 0;
+    private int currentPage              = 0;
+    private final Handler handler        = new Handler();
+    private Timer swipeTimer             = new Timer();
 
-    final Handler handler = new Handler();
-    Timer swipeTimer = new Timer();
-
+    //MARK: Life cycle methods
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,14 +62,10 @@ public class SearchBreed extends AppCompatActivity {
                 setupSlider();
             }
         });
-
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(swipeTimer != null) {
-                    swipeTimer.cancel();
-                    swipeTimer = null;
-                }
+                stopTimmer();
 
             }
         });
@@ -75,35 +73,49 @@ public class SearchBreed extends AppCompatActivity {
         btnStop.setVisibility(View.INVISIBLE);
     }
 
+    //MARK: Initial the slider
     private void setupSlider(){
 
-        btnStop.setVisibility(View.VISIBLE);
+        //call reset function
+        resetView();
 
-        imgArray.clear();
+        //get type text
         String searchText = txtSearch.getText().toString();
 
+        //validate user input empty or null
         if (searchText == null || searchText.isEmpty()) {
             Toast.makeText(getApplicationContext(),"Please insert search text", Toast.LENGTH_SHORT).show();
             return;
         }
 
-
+        //formatting the search string
         searchText  = searchText.replaceAll("\\s+","").toLowerCase();
 
+        //check search text is available breed or not
         if (!DogCategories.getInstance().getBreeds().contains(searchText)) {
             Toast.makeText(getApplicationContext(),"Invalid breed name", Toast.LENGTH_SHORT).show();
             return;
         }
 
-
+        //create image slider array
         for (int i=0; i<10; i++) {
             String imageName = DogCategories.getInstance().getRandomDogImageName(searchText);
-
             imgArray.add(Utility.getDrawable(SearchBreed.this,imageName));
         }
 
+        //create adapter to slider
         viewPagerSlider.setAdapter(new ImageSlideAdapter(SearchBreed.this, imgArray));
 
+
+        //start automatic slider
+        startTimmer();
+
+    }
+
+    //MARK: Timer start function
+    private void startTimmer () {
+
+        //create runnable thread
         final Runnable Update = new Runnable() {
             @Override
             public void run() {
@@ -115,13 +127,32 @@ public class SearchBreed extends AppCompatActivity {
         };
 
 
-
-        swipeTimer.schedule(new TimerTask() {
+        //create timer and runnable thread
+        swipeTimer = new Timer();
+        swipeTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 handler.post(Update);
             }
-        }, 5000, 5000);
+        }, 0, 5000);
 
+
+    }
+
+    //MARK: Timer stop function
+    private void stopTimmer () {
+
+        if(swipeTimer != null) {
+            swipeTimer.cancel();
+            swipeTimer = null;
+        }
+
+    }
+
+    //MARK: Reset view
+    private void resetView(){
+        stopTimmer();
+        btnStop.setVisibility(View.VISIBLE);
+        imgArray.clear();
     }
 }

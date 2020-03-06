@@ -41,7 +41,7 @@ public class DogCategories {
         add("Chow");
         add("Pomeranian");
         add("Great Pyrenees");
-        add("EntleBucher");
+        add("Entlebucher");
         add("Appenzeller");
         add("Collie");
         add("Labrador Retriever");
@@ -80,7 +80,7 @@ public class DogCategories {
     private DogCategories () {
 
         Collections.shuffle(imageRandomIndexList);
-        Collections.shuffle(breeds);
+        Collections.shuffle(breedRandomIndexList);
     }
 
 
