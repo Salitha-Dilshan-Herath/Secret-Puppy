@@ -1,4 +1,4 @@
-package com.iit.secretpuppy.utility;
+package com.iit.secretpuppy.utility.adapters;
 
 import android.content.Context;
 import android.database.DataSetObserver;
@@ -73,6 +73,7 @@ public class CustomPlaceholderSelectedSpinnerAdapter implements SpinnerAdapter, 
 
     @Override
     public int getCount() {
+
         int count = adapter.getCount();
         return count == 0 ? 0 : count + DEFUALT_PLACEHOLDERS_COUNT;
     }

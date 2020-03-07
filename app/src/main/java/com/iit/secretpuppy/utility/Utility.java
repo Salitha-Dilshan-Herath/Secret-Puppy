@@ -1,9 +1,11 @@
 package com.iit.secretpuppy.utility;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.inputmethod.InputMethodManager;
 
 public class Utility {
 
@@ -27,5 +29,13 @@ public class Utility {
     public static String getShowBreedName (String formattingString) {
 
         return (String) DogCategories.getInstance().getShowBreeds().get(DogCategories.getInstance().getBreeds().indexOf(formattingString));
+    }
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) activity.getSystemService(
+                        Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
     }
 }

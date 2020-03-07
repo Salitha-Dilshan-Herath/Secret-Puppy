@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.iit.secretpuppy.utility.DogCategories;
-import com.iit.secretpuppy.utility.ImageSlideAdapter;
+import com.iit.secretpuppy.utility.adapters.ImageSlideAdapter;
 import com.iit.secretpuppy.utility.Utility;
 
 import java.util.ArrayList;
@@ -33,6 +33,7 @@ public class SearchBreed extends AppCompatActivity {
     private int currentPage              = 0;
     private final Handler handler        = new Handler();
     private Timer swipeTimer             = new Timer();
+    private ImageSlideAdapter imageSlideAdapter;
 
     //MARK: Life cycle methods
     @Override
@@ -59,18 +60,22 @@ public class SearchBreed extends AppCompatActivity {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Utility.hideSoftKeyboard(SearchBreed.this);
                 setupSlider();
             }
         });
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                btnStop.setEnabled(false);
                 stopTimmer();
 
             }
         });
 
-        btnStop.setVisibility(View.INVISIBLE);
+        btnStop.setEnabled(false);
     }
 
     //MARK: Initial the slider
@@ -84,6 +89,7 @@ public class SearchBreed extends AppCompatActivity {
 
         //validate user input empty or null
         if (searchText == null || searchText.isEmpty()) {
+            viewPagerSlider.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(),"Please insert search text", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -93,18 +99,31 @@ public class SearchBreed extends AppCompatActivity {
 
         //check search text is available breed or not
         if (!DogCategories.getInstance().getBreeds().contains(searchText)) {
+
+            viewPagerSlider.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(),"Invalid breed name", Toast.LENGTH_SHORT).show();
+
+            if (imageSlideAdapter != null) {
+                imageSlideAdapter.notifyDataSetChanged();
+            }
+
             return;
         }
 
+        btnStop.setEnabled(true);
+        viewPagerSlider.setVisibility(View.VISIBLE);
+        
         //create image slider array
         for (int i=0; i<10; i++) {
             String imageName = DogCategories.getInstance().getRandomDogImageName(searchText);
             imgArray.add(Utility.getDrawable(SearchBreed.this,imageName));
         }
 
+
+        imageSlideAdapter = new ImageSlideAdapter(SearchBreed.this, imgArray);
+
         //create adapter to slider
-        viewPagerSlider.setAdapter(new ImageSlideAdapter(SearchBreed.this, imgArray));
+        viewPagerSlider.setAdapter(imageSlideAdapter);
 
 
         //start automatic slider

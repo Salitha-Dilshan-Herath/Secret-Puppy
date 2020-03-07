@@ -10,27 +10,41 @@
         android:id="@+id/constraintLayout6"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".2"
+        app:layout_constraintHeight_percent=".17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/txtBreedName"
+
+        <ProgressBar
+            android:id="@+id/view_dog_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:fadeScrollbars="true"
-            android:gravity="center"
-            android:text="TextView"
-            android:textSize="30sp"
-            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:progress="100"
+            android:progressDrawable="@drawable/custom_progressbar_drawable"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent=".7"
-            app:layout_constraintHeight_percent=".8"
-            />
+            app:layout_constraintWidth_percent=".3" />
+
+        <TextView
+            android:id="@+id/txtCountDownDog"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="10"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view_dog_progress_bar"
+            app:layout_constraintEnd_toEndOf="@+id/view_dog_progress_bar"
+            app:layout_constraintStart_toStartOf="@+id/view_dog_progress_bar"
+            app:layout_constraintTop_toTopOf="@+id/view_dog_progress_bar" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +52,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintHeight_percent=".55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
 
@@ -157,11 +171,11 @@
                 android:id="@+id/constriantImgBack3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginLeft="120dp"
+                android:layout_marginStart="110dp"
+                android:layout_marginLeft="110dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="120dp"
-                android:layout_marginRight="120dp"
+                android:layout_marginEnd="110dp"
+                android:layout_marginRight="110dp"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -174,11 +188,11 @@
                 android:id="@+id/imgDog3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="128dp"
-                android:layout_marginLeft="128dp"
+                android:layout_marginStart="118dp"
+                android:layout_marginLeft="118dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="128dp"
-                android:layout_marginRight="128dp"
+                android:layout_marginEnd="118dp"
+                android:layout_marginRight="118dp"
                 android:layout_marginBottom="16dp"
                 android:contentDescription="Image Dog 1"
                 android:scaleType="centerCrop"
@@ -207,7 +221,7 @@
             android:layout_marginTop="8dp"
             android:text="SUBMIT"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".3"
+            app:layout_constraintHeight_percent=".28"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout11"
             app:layout_constraintWidth_percent=".6" />
@@ -217,7 +231,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".3"
+            app:layout_constraintHeight_percent=".4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -225,14 +239,30 @@
                 android:id="@+id/txtLevel2Result"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="TextView"
+                android:text="status "
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtBreedName"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:fadeScrollbars="true"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtLevel2Result"
+                app:layout_constraintEnd_toEndOf="@+id/txtLevel2Result"
+                app:layout_constraintHeight_percent=".8"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".7" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

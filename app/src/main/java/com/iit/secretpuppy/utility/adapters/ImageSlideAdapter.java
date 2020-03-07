@@ -1,4 +1,4 @@
-package com.iit.secretpuppy.utility;
+package com.iit.secretpuppy.utility.adapters;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -23,6 +23,7 @@ public class ImageSlideAdapter extends PagerAdapter {
         this.context = context;
         this.images = images;
         inflater = LayoutInflater.from(context);
+
     }
     @Override
     public void destroyItem(ViewGroup container, int position, Object object){
