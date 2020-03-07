@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SearchBreed"></activity>
         <activity android:name=".IdentifyDogActivity" />
-        <activity android:name=".IdentifyBreedActivity" />
+        <activity android:name=".IdentifyBreedActivity"
+            />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

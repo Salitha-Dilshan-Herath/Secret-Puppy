@@ -112,7 +112,7 @@ public class SearchBreed extends AppCompatActivity {
 
         btnStop.setEnabled(true);
         viewPagerSlider.setVisibility(View.VISIBLE);
-        
+
         //create image slider array
         for (int i=0; i<10; i++) {
             String imageName = DogCategories.getInstance().getRandomDogImageName(searchText);

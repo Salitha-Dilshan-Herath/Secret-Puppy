@@ -73,8 +73,6 @@
             android:id="@+id/btnDogSearch"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="250dp"
-            android:layout_marginLeft="250dp"
             android:gravity="center"
             android:text="Search Dog Breeds"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iit.secretpuppy.alerts.IdentifyBreedCorrectMessage;
+import com.iit.secretpuppy.alerts.IdentifyBreedEmtyMessage;
 import com.iit.secretpuppy.alerts.IdentifyBreedWrongWithDetailMessage;
 import com.iit.secretpuppy.utility.Config;
 import com.iit.secretpuppy.utility.DogCategories;
@@ -39,6 +41,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     private int progress       = 10;
     private ArrayAdapter<String> adapter;
     private CountDownTimer progressCountDownTimer;
+    private Boolean idRotated = false;
 
 
     @Override
@@ -50,8 +53,19 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        progressCountDownTimer.cancel();
+    }
+
     //MARK: Custom Methods
     private void setupView() {
+
+        if (idRotated) {
+            idRotated = false;
+            return;
+        }
 
         //bind ui component to local variables
         spinnerBreed          = findViewById(R.id.spinner_breeds);
@@ -82,7 +96,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                gameFunction();
+                gameFunction(true);
             }
         });
 
@@ -121,13 +135,17 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
     }
 
-    private void gameFunction () {
+    private void gameFunction (Boolean isButtonTap) {
         if (stateOfBtnNext == 0){
 
             //validate user is select a breed or not
             if (spinnerBreed.getSelectedItem() == null){
 
-                if  (Config.IS_TIMER_MODE){
+                if  (Config.IS_TIMER_MODE && !isButtonTap){
+
+                    IdentifyBreedEmtyMessage identifyBreedEmtyMessage = new IdentifyBreedEmtyMessage(IdentifyBreedActivity.this);
+                    identifyBreedEmtyMessage.show();
+                    restTimeUp();
 
                 }else {
                     Toast.makeText(getApplicationContext(),"Please select a breed", Toast.LENGTH_SHORT).show();
@@ -135,6 +153,13 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                 }
                 return;
             }
+
+            if (Config.IS_TIMER_MODE) {
+                progressBarTimer.setVisibility(View.INVISIBLE);
+                progressCountDownTimer.cancel();
+                txtCountDown.setVisibility(View.INVISIBLE);
+            }
+
 
             //selected breed convert to string
             String selected_name = (String) spinnerBreed.getSelectedItem();
@@ -148,14 +173,14 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                 IdentifyBreedCorrectMessage identifyBreedCorrectMessage = new IdentifyBreedCorrectMessage(IdentifyBreedActivity.this);
                 identifyBreedCorrectMessage.show();
 
-                txtResult.setText("Your answer is correct");
+                txtResult.setText("Press Next Button");
                 txtResult.setTextColor(Color.GREEN);
 
             }else {
 
                 IdentifyBreedWrongWithDetailMessage identifyBreedWrongMessage = new IdentifyBreedWrongWithDetailMessage(IdentifyBreedActivity.this, Utility.getShowBreedName(randomBreed));
                 identifyBreedWrongMessage.show();
-                txtResult.setText("Your answer is wrong");
+                txtResult.setText("Press Next Button");
                 txtResult.setTextColor(Color.RED);
 
             }
@@ -170,6 +195,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
         }
     }
 
+    //MARK: reload activity when press next button
     private void reloadActivity (){
 
         Intent intent = getIntent();
@@ -179,6 +205,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
     }
 
+    //MARK: Setup timer for when enable time mode
     private void setupTimer() {
         progressCountDownTimer = new CountDownTimer(10000,1000) {
             @Override
@@ -195,11 +222,22 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
                 progress++;
                 progressBarTimer.setProgress(0);
-                gameFunction();
+                gameFunction(false);
             }
         };
 
         progressCountDownTimer.start();
+    }
+
+    //MARK: Rest method for when time's up
+    private void restTimeUp(){
+        txtResult.setVisibility(View.VISIBLE);
+        spinnerBreed.setVisibility(View.INVISIBLE);
+        txtResult.setTextColor(Color.GREEN);
+        txtResult.setText("Press Next Button");
+        txtCountDown.setVisibility(View.INVISIBLE);
+        btnNext.setText("Next");
+        stateOfBtnNext = 1;
     }
 
 

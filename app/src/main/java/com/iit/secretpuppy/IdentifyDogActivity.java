@@ -6,14 +6,18 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iit.secretpuppy.alerts.IdentifyBreedCorrectMessage;
+import com.iit.secretpuppy.alerts.IdentifyBreedEmtyMessage;
 import com.iit.secretpuppy.alerts.IdentifyBreedWrongMessage;
+import com.iit.secretpuppy.utility.Config;
 import com.iit.secretpuppy.utility.DogCategories;
 import com.iit.secretpuppy.utility.Utility;
 
@@ -30,6 +34,9 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
     private Button    btnSubmit;
     private TextView  txtBreedName;
     private TextView  txtResult;
+    private ProgressBar progressBarTimer ;
+    private TextView    txtCountDown;
+    private ConstraintLayout constraintLayoutTimer;
 
     private ConstraintLayout viwImgBack1;
     private ConstraintLayout viwImgBack2;
@@ -43,6 +50,10 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
     private int randomIndex       = 0;
     private int selectedIndex     = -1;
     private int submitButtonState = 0;
+    private int progress          = 10;
+    private CountDownTimer progressCountDownTimer;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +61,12 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_identify_dog);
 
         setupView();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        progressCountDownTimer.cancel();
     }
 
     //MARK: Initial view setup
@@ -65,6 +82,10 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         viwImgBack1  = findViewById(R.id.constriantImgBack1);
         viwImgBack2  = findViewById(R.id.constriantImgBack2);
         viwImgBack3  = findViewById(R.id.constriantImgBack3);
+
+        progressBarTimer      = findViewById(R.id.view_dog_progress_bar);
+        txtCountDown          = findViewById(R.id.txtCountDownDog);
+        constraintLayoutTimer = findViewById(R.id.constraintLayoutProgressDog);
 
         btnSubmit.setOnClickListener(this);
 
@@ -82,6 +103,13 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
 
         txtResult.setVisibility(View.INVISIBLE);
 
+        if(Config.IS_TIMER_MODE) {
+            constraintLayoutTimer.setVisibility(View.VISIBLE);
+            setupTimer();
+        }else {
+            constraintLayoutTimer.setVisibility(View.GONE);
+        }
+
         //set images to image view
         for (int i = 0; i < 3 ; i++){
             imageViewsList.get(i).setOnClickListener(this);
@@ -93,7 +121,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         randomIndex     = ran.nextInt(3) ;
         String name     = randomBreedList.get(randomIndex);
         String show_name = Utility.getShowBreedName(name);
-        txtBreedName.setText(show_name);
+        txtBreedName.setText( "Find a " + show_name.toLowerCase() + " breed image");
 
     }
 
@@ -118,17 +146,35 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
     }
 
     //MARK: submit button click event
-    private void tapBtnSubmit() {
+    private void gameFunction(Boolean isButtonTap) {
 
         if (submitButtonState == 0){
 
             //validate user is select a image or not
+
             if (selectedIndex == -1) {
-                Toast.makeText(getApplicationContext(),"Please select a correct image", Toast.LENGTH_SHORT).show();
+
+                if  (Config.IS_TIMER_MODE && !isButtonTap){
+
+                    IdentifyBreedEmtyMessage identifyBreedEmtyMessage = new IdentifyBreedEmtyMessage(IdentifyDogActivity.this);
+                    identifyBreedEmtyMessage.show();
+                    restTimeUp();
+
+                }else {
+                    Toast.makeText(getApplicationContext(),"Please select a correct image", Toast.LENGTH_SHORT).show();
+
+                }
                 return;
             }
 
+            if (Config.IS_TIMER_MODE) {
+                progressBarTimer.setVisibility(View.INVISIBLE);
+                progressCountDownTimer.cancel();
+                txtCountDown.setVisibility(View.INVISIBLE);
+            }
+
             txtResult.setVisibility(View.VISIBLE);
+            txtBreedName.setVisibility(View.INVISIBLE);
 
             System.out.println(selectedIndex);
             System.out.println(randomIndex);
@@ -167,12 +213,54 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
 
         } else {
 
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-            submitButtonState = 0;
+            reloadActivity();
         }
 
+    }
+
+    //MARK: reload activity when press next button
+    private void reloadActivity (){
+
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        submitButtonState = 0;
+
+    }
+
+    //MARK: Setup timer for when enable time mode
+    private void setupTimer() {
+        progressCountDownTimer = new CountDownTimer(10000,1000) {
+            @Override
+            public void onTick(long l) {
+
+                progress--;
+                System.out.println(progress);
+                progressBarTimer.setProgress(progress*100/(10000/1000));
+                txtCountDown.setText( progress  + "");
+            }
+
+            @Override
+            public void onFinish() {
+
+                progress++;
+                progressBarTimer.setProgress(0);
+                gameFunction(false);
+            }
+        };
+
+        progressCountDownTimer.start();
+    }
+
+    //MARK: Rest method for when time's up
+    private void restTimeUp(){
+        txtResult.setVisibility(View.VISIBLE);
+        txtBreedName.setVisibility(View.INVISIBLE);
+        txtResult.setTextColor(Color.GREEN);
+        txtResult.setText("Press Next Button");
+        txtCountDown.setVisibility(View.INVISIBLE);
+        btnSubmit.setText("Next");
+        submitButtonState = 1;
     }
 
     //MARK: click event function
@@ -207,7 +295,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
 
             case R.id.btnSubmit:
 
-                tapBtnSubmit();
+                gameFunction(true);
 
                 break;
         }
