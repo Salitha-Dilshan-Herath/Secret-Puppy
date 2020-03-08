@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".LeaderBoard"></activity>
         <activity android:name=".LaunchScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,8 +20,7 @@
         <activity android:name=".SearchBreed" />
         <activity android:name=".IdentifyDogActivity" />
         <activity android:name=".IdentifyBreedActivity" />
-        <activity android:name=".MainActivity"/>
-
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

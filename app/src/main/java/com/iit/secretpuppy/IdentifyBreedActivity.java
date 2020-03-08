@@ -3,6 +3,7 @@ package com.iit.secretpuppy;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -63,6 +64,8 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
+        Utility.saveLevel1Score(this, Config.CURRENT_SCORE_BREED_ACTIVITY);
         Config.CURRENT_SCORE_BREED_ACTIVITY = 0;
     }
 

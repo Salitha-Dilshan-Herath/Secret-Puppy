@@ -2,6 +2,7 @@ package com.iit.secretpuppy.utility;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -37,5 +38,46 @@ public class Utility {
                         Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(
                 activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+
+    public static void saveLevel1Score(Context context, int score) {
+
+        if (getLevel1Score(context) > score) {
+            return;
+        }
+
+        //--SAVE Data
+        SharedPreferences preferences = context.getSharedPreferences("Score", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("lv1", score);
+        editor.commit();
+    }
+
+    public static int getLevel1Score (Context context) {
+
+        SharedPreferences preferences = context.getSharedPreferences("Score", Context.MODE_PRIVATE);
+
+        return  preferences.getInt("lv1", 0);
+    }
+
+    public static void saveLevel2Score(Context context, int score) {
+
+        if (getLevel2Score(context) > score) {
+            return;
+        }
+
+        //--SAVE Data
+        SharedPreferences preferences = context.getSharedPreferences("Score", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("lv2", score);
+        editor.commit();
+    }
+
+    public static int getLevel2Score (Context context) {
+
+        SharedPreferences preferences = context.getSharedPreferences("Score", Context.MODE_PRIVATE);
+
+        return  preferences.getInt("lv2", 0);
     }
 }

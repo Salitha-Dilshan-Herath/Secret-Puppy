@@ -18,6 +18,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
+        <TextView
+            android:id="@+id/txtScoreDog"
+            android:layout_width="130dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="  Score \n 00"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:fontFamily="@font/machinegunk_nyqg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ProgressBar
             android:id="@+id/view_dog_progress_bar"
             style="?android:attr/progressBarStyleHorizontal"

@@ -19,17 +19,35 @@
             android:id="@+id/switchTimeMode"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:gravity="center|center_horizontal|center_vertical"
             android:text="TIMER MODE "
             android:textColor="#FFF8F8"
             android:textSize="18sp"
+
             app:fontFamily="@font/machinegunk_nyqg"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent=".4" />
+
+        <Button
+            android:id="@+id/btnLeaderBoard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@null"
+            android:text="Leaderboard"
+            android:textSize="18sp"
+            app:fontFamily="@font/machinegunk_nyqg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

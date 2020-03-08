@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E91E63"
+
     tools:context=".IdentifyDogActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +41,8 @@
             android:layout_height="0dp"
             android:gravity="center"
             android:text="10"
-            android:textSize="30sp"
+            app:fontFamily="@font/machinegunk_nyqg"
+            android:textSize="35sp"
             app:layout_constraintBottom_toBottomOf="@+id/view_dog_progress_bar"
             app:layout_constraintEnd_toEndOf="@+id/view_dog_progress_bar"
             app:layout_constraintStart_toStartOf="@+id/view_dog_progress_bar"
@@ -215,6 +218,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/txtScoreDog2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="  Score \n 00"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:fontFamily="@font/machinegunk_nyqg"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout11"
             android:layout_width="0dp"
@@ -229,7 +246,10 @@
                 android:id="@+id/btnSubmit"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:background="#9C27B0"
                 android:text="SUBMIT"
+                android:textSize="18sp"
+                app:fontFamily="@font/machinegunk_nyqg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent=".28"
@@ -254,6 +274,7 @@
                     android:fadeScrollbars="true"
                     android:gravity="center"
                     android:text="TextView"
+                    app:fontFamily="@font/machinegunk_nyqg"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"

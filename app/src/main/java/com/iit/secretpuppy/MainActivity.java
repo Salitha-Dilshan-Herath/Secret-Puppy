@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnBreed;
     private Button btnDog;
     private Button btnDogSearch;
+    private Button btnLeaderBorad;
     private Switch switchTime;
 
     @Override
@@ -24,10 +25,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnBreed     = findViewById(R.id.btnBreed);
-        btnDog       = findViewById(R.id.btnDog);
-        btnDogSearch = findViewById(R.id.btnDogSearch);
-        switchTime   = findViewById(R.id.switchTimeMode);
+        btnBreed       = findViewById(R.id.btnBreed);
+        btnDog         = findViewById(R.id.btnDog);
+        btnDogSearch   = findViewById(R.id.btnDogSearch);
+        switchTime     = findViewById(R.id.switchTimeMode);
+        btnLeaderBorad = findViewById(R.id.btnLeaderBoard);
 
         switchTime.setTypeface(ResourcesCompat.getFont(this, R.font.machinegunk_nyqg));
 
@@ -63,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 Config.IS_TIMER_MODE = b;
+            }
+        });
+
+        btnLeaderBorad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(),LeaderBoard.class);
+                startActivity(intent);
             }
         });
     }

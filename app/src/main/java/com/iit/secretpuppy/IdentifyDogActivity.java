@@ -36,7 +36,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
     private TextView  txtResult;
     private ProgressBar progressBarTimer ;
     private TextView    txtCountDown;
-    private ConstraintLayout constraintLayoutTimer;
+    private TextView    txtScore;
 
     private ConstraintLayout viwImgBack1;
     private ConstraintLayout viwImgBack2;
@@ -54,7 +54,6 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
     private CountDownTimer progressCountDownTimer;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +69,15 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
             progressCountDownTimer.cancel();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Utility.saveLevel2Score(this, Config.CURRENT_SCORE_DOG_ACTIVITY);
+
+        Config.CURRENT_SCORE_DOG_ACTIVITY = 0;
+    }
+
     //MARK: Initial view setup
     private void setupView(){
 
@@ -83,10 +91,12 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         viwImgBack1  = findViewById(R.id.constriantImgBack1);
         viwImgBack2  = findViewById(R.id.constriantImgBack2);
         viwImgBack3  = findViewById(R.id.constriantImgBack3);
+        txtScore     = findViewById(R.id.txtScoreDog);
 
         progressBarTimer      = findViewById(R.id.view_dog_progress_bar);
         txtCountDown          = findViewById(R.id.txtCountDownDog);
-        constraintLayoutTimer = findViewById(R.id.constraintLayoutProgressDog);
+
+        txtScore.setText("  Score \n " + Config.CURRENT_SCORE_DOG_ACTIVITY);
 
         btnSubmit.setOnClickListener(this);
 
@@ -187,10 +197,14 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
                 IdentifyBreedCorrectMessage identifyBreedCorrectMessage = new IdentifyBreedCorrectMessage(this);
                 identifyBreedCorrectMessage.show();
 
+                Config.CURRENT_SCORE_DOG_ACTIVITY += 10;
+                txtScore.setText("  Score \n " + Config.CURRENT_SCORE_DOG_ACTIVITY);
+
+
                 imageViewsBackgroundList.get(randomIndex).setBackgroundColor(Color.GREEN);
                 imageViewsBackgroundList.get(randomIndex).startAnimation(Utility.flashingAnumation());
 
-                txtResult.setText("Your answer is correct");
+                txtResult.setText("Press Next Button");
                 txtResult.setTextColor(Color.WHITE);
 
             }else {
@@ -202,7 +216,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
                 imageViewsBackgroundList.get(selectedIndex).setBackgroundColor(Color.RED);
                 imageViewsBackgroundList.get(selectedIndex).startAnimation(Utility.flashingAnumation());
 
-                txtResult.setText("Your answer is wrong");
+                txtResult.setText("Press Next Button");
                 txtResult.setTextColor(Color.WHITE);
 
             }
