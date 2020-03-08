@@ -3,22 +3,29 @@ package com.iit.secretpuppy.alerts;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iit.secretpuppy.R;
 
 public class IdentifyBreedWrongMessage extends AlertDialog {
 
-    private Activity current;
-    private Button btnOk;
-    private TextView txtCorrect;
+    private Activity  current;
+    private Button    btnOk;
+    private TextView  txtCorrect;
+    private ImageView imgCorrect;
 
-    public IdentifyBreedWrongMessage(Activity current) {
+    private Drawable correctImage;
+
+    public IdentifyBreedWrongMessage(Activity current, Drawable correctImage) {
         super(current);
         this.current = current;
+        this.correctImage = correctImage;
+
     }
 
     @Override
@@ -34,9 +41,11 @@ public class IdentifyBreedWrongMessage extends AlertDialog {
 
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        btnOk = findViewById(R.id.btnOk);
+        btnOk      = findViewById(R.id.btnOk);
         txtCorrect = findViewById(R.id.txtCorrectName);
+        imgCorrect = findViewById(R.id.imgCorrect);
 
+        imgCorrect.setImageDrawable(correctImage);
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

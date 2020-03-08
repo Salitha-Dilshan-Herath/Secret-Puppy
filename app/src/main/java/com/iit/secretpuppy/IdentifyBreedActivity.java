@@ -56,7 +56,9 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        progressCountDownTimer.cancel();
+
+        if (progressCountDownTimer != null)
+             progressCountDownTimer.cancel();
     }
 
     //MARK: Custom Methods

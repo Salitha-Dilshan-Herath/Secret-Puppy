@@ -66,7 +66,8 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        progressCountDownTimer.cancel();
+        if (progressCountDownTimer != null)
+            progressCountDownTimer.cancel();
     }
 
     //MARK: Initial view setup
@@ -192,7 +193,8 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
 
             }else {
 
-                IdentifyBreedWrongMessage identifyBreedWrongMessage = new IdentifyBreedWrongMessage(this);
+
+                IdentifyBreedWrongMessage identifyBreedWrongMessage = new IdentifyBreedWrongMessage(this, imageViewsList.get(randomIndex).getDrawable());
                 identifyBreedWrongMessage.show();
 
                 imageViewsBackgroundList.get(selectedIndex).setBackgroundColor(Color.RED);

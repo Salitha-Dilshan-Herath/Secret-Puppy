@@ -48,7 +48,7 @@
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="50dp"
             android:gravity="center"
             android:text="WRONG"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -57,9 +57,23 @@
             android:textStyle="bold"
             app:fontFamily="sans-serif-black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".4"
+            app:layout_constraintHeight_percent=".2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgCorrect"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnOk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:srcCompat="@tools:sample/avatars"
+            app:layout_constraintHeight_percent=".35"
+            app:layout_constraintWidth_percent=".2"
+
+            android:scaleType="centerCrop"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,7 +85,7 @@
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout13"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout13"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout13"
-
-        app:srcCompat="@drawable/wrong" />
+        android:background="@drawable/wrong_message_cornerradiues"
+        app:srcCompat="@drawable/cancel"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

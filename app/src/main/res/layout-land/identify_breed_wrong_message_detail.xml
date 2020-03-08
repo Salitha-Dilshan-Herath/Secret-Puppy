@@ -91,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout13"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout13"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout13"
-
-        app:srcCompat="@drawable/wrong" />
+        android:background="@drawable/wrong_message_cornerradiues"
+        app:srcCompat="@drawable/cancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

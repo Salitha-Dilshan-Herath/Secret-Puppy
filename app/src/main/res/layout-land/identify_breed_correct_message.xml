@@ -61,6 +61,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:text="You got 10 points"
+            android:textColor="#8BC34A"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/btnOk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
@@ -71,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout13"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout13"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout13"
-
-        app:srcCompat="@drawable/correct_tick" />
+        android:background="@drawable/correct_message_cornerradiues"
+        app:srcCompat="@drawable/tick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
