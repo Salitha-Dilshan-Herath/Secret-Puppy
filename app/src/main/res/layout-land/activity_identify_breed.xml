@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#CDDC39"
     tools:context=".IdentifyBreedActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,6 +62,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="10"
+
+                app:fontFamily="@font/machinegunk_nyqg"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/view_progress_bar"
@@ -107,6 +110,8 @@
                     android:layout_marginLeft="24dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
+                    app:fontFamily="@font/machinegunk_nyqg"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent=".5"
@@ -120,6 +125,7 @@
                     android:gravity="center"
                     android:textColor="#4CAF50"
                     android:textSize="24sp"
+                    app:fontFamily="@font/machinegunk_nyqg"
                     app:layout_constraintBottom_toBottomOf="@+id/spinner_breeds"
                     app:layout_constraintEnd_toEndOf="@+id/spinner_breeds"
                     app:layout_constraintStart_toStartOf="@+id/spinner_breeds"
@@ -131,7 +137,11 @@
                 android:id="@+id/btnSubmit"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:background="#9C27B0"
                 android:text="Submit"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:fontFamily="@font/machinegunk_nyqg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent=".4"

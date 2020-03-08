@@ -5,8 +5,8 @@
         <shape
             android:shape="ring"
             android:useLevel="true"
-            android:thicknessRatio="20" >
-            <solid android:color="#9C27B0" />
+            android:thicknessRatio="15" >
+            <solid android:color="#FF5722" />
         </shape>
     </item>
 
@@ -14,8 +14,8 @@
         <shape
             android:shape="ring"
             android:useLevel="true"
-            android:thicknessRatio="10" >
-            <solid android:color="#9C27B0" />
+            android:thicknessRatio="15" >
+            <solid android:color="#FF5722" />
         </shape>
     </item>
 

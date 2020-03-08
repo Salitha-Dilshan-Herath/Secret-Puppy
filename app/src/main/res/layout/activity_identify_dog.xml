@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E91E63"
     tools:context=".IdentifyDogActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +40,8 @@
             android:layout_height="0dp"
             android:gravity="center"
             android:text="10"
-            android:textSize="30sp"
+            app:fontFamily="@font/machinegunk_nyqg"
+            android:textSize="35sp"
             app:layout_constraintBottom_toBottomOf="@+id/view_dog_progress_bar"
             app:layout_constraintEnd_toEndOf="@+id/view_dog_progress_bar"
             app:layout_constraintStart_toStartOf="@+id/view_dog_progress_bar"
@@ -219,7 +221,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
+            android:background="#9C27B0"
             android:text="SUBMIT"
+            android:textSize="18sp"
+            app:fontFamily="@font/machinegunk_nyqg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent=".28"
             app:layout_constraintStart_toStartOf="parent"
@@ -241,6 +246,7 @@
                 android:layout_height="0dp"
                 android:gravity="center"
                 android:text="status "
+                app:fontFamily="@font/machinegunk_nyqg"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -256,6 +262,7 @@
                 android:text="TextView"
                 android:textSize="20sp"
                 android:textStyle="bold"
+
                 app:layout_constraintBottom_toBottomOf="@+id/txtLevel2Result"
                 app:layout_constraintEnd_toEndOf="@+id/txtLevel2Result"
                 app:layout_constraintHeight_percent=".8"

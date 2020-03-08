@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#CDDC39"
     tools:context=".IdentifyBreedActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,6 +13,7 @@
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".65"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -47,7 +49,7 @@
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:progress="100"
-                android:progressDrawable="@drawable/custom_progressbar_drawable"
+                android:progressDrawable="@drawable/custom_progressbar_breed_drawable"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,10 +62,25 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="10"
+                android:textColor="#F8FFFFFF"
                 android:textSize="30sp"
+                app:fontFamily="@font/machinegunk_nyqg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/view_progress_bar"
                 app:layout_constraintStart_toStartOf="@+id/view_progress_bar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtScore"
+                android:layout_width="130dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="  Score \n 00"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                app:fontFamily="@font/machinegunk_nyqg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -106,6 +123,7 @@
                     android:layout_marginLeft="24dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginRight="24dp"
+                    app:fontFamily="@font/machinegunk_nyqg"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent=".5"
@@ -119,6 +137,7 @@
                     android:gravity="center"
                     android:textColor="#4CAF50"
                     android:textSize="24sp"
+                    app:fontFamily="@font/machinegunk_nyqg"
                     app:layout_constraintBottom_toBottomOf="@+id/spinner_breeds"
                     app:layout_constraintEnd_toEndOf="@+id/spinner_breeds"
                     app:layout_constraintStart_toStartOf="@+id/spinner_breeds"
@@ -130,7 +149,11 @@
                 android:id="@+id/btnSubmit"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:background="#9C27B0"
                 android:text="Submit"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:fontFamily="@font/machinegunk_nyqg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent=".35"

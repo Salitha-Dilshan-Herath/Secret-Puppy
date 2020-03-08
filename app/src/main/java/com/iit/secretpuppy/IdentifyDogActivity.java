@@ -105,10 +105,12 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         txtResult.setVisibility(View.INVISIBLE);
 
         if(Config.IS_TIMER_MODE) {
-            constraintLayoutTimer.setVisibility(View.VISIBLE);
+            progressBarTimer.setVisibility(View.VISIBLE);
+            txtCountDown.setVisibility(View.VISIBLE);
             setupTimer();
         }else {
-            constraintLayoutTimer.setVisibility(View.GONE);
+            progressBarTimer.setVisibility(View.GONE);
+            txtCountDown.setVisibility(View.GONE);
         }
 
         //set images to image view
@@ -189,7 +191,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
                 imageViewsBackgroundList.get(randomIndex).startAnimation(Utility.flashingAnumation());
 
                 txtResult.setText("Your answer is correct");
-                txtResult.setTextColor(Color.GREEN);
+                txtResult.setTextColor(Color.WHITE);
 
             }else {
 
@@ -201,7 +203,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
                 imageViewsBackgroundList.get(selectedIndex).startAnimation(Utility.flashingAnumation());
 
                 txtResult.setText("Your answer is wrong");
-                txtResult.setTextColor(Color.RED);
+                txtResult.setTextColor(Color.WHITE);
 
             }
 
@@ -258,7 +260,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
     private void restTimeUp(){
         txtResult.setVisibility(View.VISIBLE);
         txtBreedName.setVisibility(View.INVISIBLE);
-        txtResult.setTextColor(Color.GREEN);
+        txtResult.setTextColor(Color.WHITE);
         txtResult.setText("Press Next Button");
         txtCountDown.setVisibility(View.INVISIBLE);
         btnSubmit.setText("Next");

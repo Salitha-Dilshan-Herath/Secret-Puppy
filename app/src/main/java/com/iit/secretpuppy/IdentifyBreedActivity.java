@@ -34,7 +34,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     private TextView    txtResult;
     private ProgressBar progressBarTimer ;
     private TextView    txtCountDown;
-    private ConstraintLayout constraintLayoutTimer;
+    private TextView    txtScore;
 
     private String randomBreed = "";
     private int stateOfBtnNext = 0;  //0 is user can submit the answer , 1 is user can get next images
@@ -42,7 +42,6 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private CountDownTimer progressCountDownTimer;
     private Boolean idRotated = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +60,12 @@ public class IdentifyBreedActivity extends AppCompatActivity {
              progressCountDownTimer.cancel();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Config.CURRENT_SCORE_BREED_ACTIVITY = 0;
+    }
+
     //MARK: Custom Methods
     private void setupView() {
 
@@ -76,21 +81,25 @@ public class IdentifyBreedActivity extends AppCompatActivity {
         txtResult             = findViewById(R.id.txtResult);
         progressBarTimer      = findViewById(R.id.view_progress_bar);
         txtCountDown          = findViewById(R.id.txtCountDown);
-        constraintLayoutTimer = findViewById(R.id.constraintLayoutBreedTimer);
+        txtScore              = findViewById(R.id.txtScore);
 
         txtResult.setVisibility(View.INVISIBLE);
         spinnerBreed.setVisibility(View.VISIBLE);
         progressBarTimer.setProgress(progress);
+
+        txtScore.setText("  Score \n " + Config.CURRENT_SCORE_BREED_ACTIVITY);
 
         //load image first time
         loadImage();
 
 
         if(Config.IS_TIMER_MODE) {
-            constraintLayoutTimer.setVisibility(View.VISIBLE);
+            progressBarTimer.setVisibility(View.VISIBLE);
+            txtCountDown.setVisibility(View.VISIBLE);
             setupTimer();
         }else {
-            constraintLayoutTimer.setVisibility(View.GONE);
+            progressBarTimer.setVisibility(View.GONE);
+            txtCountDown.setVisibility(View.GONE);
         }
 
         //button next click event
@@ -175,15 +184,18 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                 IdentifyBreedCorrectMessage identifyBreedCorrectMessage = new IdentifyBreedCorrectMessage(IdentifyBreedActivity.this);
                 identifyBreedCorrectMessage.show();
 
+                Config.CURRENT_SCORE_BREED_ACTIVITY += 10;
+                txtScore.setText("  Score \n " + Config.CURRENT_SCORE_BREED_ACTIVITY);
+
                 txtResult.setText("Press Next Button");
-                txtResult.setTextColor(Color.GREEN);
+                txtResult.setTextColor(Color.WHITE);
 
             }else {
 
                 IdentifyBreedWrongWithDetailMessage identifyBreedWrongMessage = new IdentifyBreedWrongWithDetailMessage(IdentifyBreedActivity.this, Utility.getShowBreedName(randomBreed));
                 identifyBreedWrongMessage.show();
                 txtResult.setText("Press Next Button");
-                txtResult.setTextColor(Color.RED);
+                txtResult.setTextColor(Color.WHITE);
 
             }
 
@@ -235,7 +247,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     private void restTimeUp(){
         txtResult.setVisibility(View.VISIBLE);
         spinnerBreed.setVisibility(View.INVISIBLE);
-        txtResult.setTextColor(Color.GREEN);
+        txtResult.setTextColor(Color.WHITE);
         txtResult.setText("Press Next Button");
         txtCountDown.setVisibility(View.INVISIBLE);
         btnNext.setText("Next");

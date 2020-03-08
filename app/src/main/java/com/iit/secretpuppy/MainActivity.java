@@ -1,6 +1,7 @@
 package com.iit.secretpuppy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         btnDog       = findViewById(R.id.btnDog);
         btnDogSearch = findViewById(R.id.btnDogSearch);
         switchTime   = findViewById(R.id.switchTimeMode);
+
+        switchTime.setTypeface(ResourcesCompat.getFont(this, R.font.machinegunk_nyqg));
 
         btnBreed.setOnClickListener(new View.OnClickListener() {
             @Override

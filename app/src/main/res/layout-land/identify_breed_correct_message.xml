@@ -38,7 +38,9 @@
             android:elevation="2dp"
             android:text="@android:string/ok"
             android:textColor="#F0F0F0"
-            android:textSize="20sp"
+            android:textSize="25sp"
+            app:fontFamily="@font/machinegunk_nyqg"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent=".15"
@@ -51,11 +53,13 @@
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="CORRECT"
+
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#4CAF50"
             android:textSize="36sp"
             android:textStyle="bold"
-            app:fontFamily="sans-serif-black"
+            app:fontFamily="@font/machinegunk_nyqg"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent=".4"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +76,8 @@
             android:layout_marginBottom="32dp"
             android:gravity="center"
             android:text="You got 10 points"
+            app:fontFamily="@font/machinegunk_nyqg"
+
             android:textColor="#8BC34A"
             android:textSize="24sp"
             android:textStyle="bold"

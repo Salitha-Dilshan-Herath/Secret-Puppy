@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAAF42"
     tools:context=".SearchBreed">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,6 +30,9 @@
             android:ems="10"
             android:hint="Type Breed Here..."
             android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:fontFamily="@font/machinegunk_nyqg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +46,11 @@
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:background="#9C27B0"
             android:text="@android:string/search_go"
+
+            android:textSize="24sp"
+            app:fontFamily="@font/machinegunk_nyqg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtSearch"
@@ -70,7 +78,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="42dp"
+        android:background="#9C27B0"
         android:text="STOP"
+        android:textSize="24sp"
+
+        app:fontFamily="@font/machinegunk_nyqg"
         app:layout_constraintEnd_toEndOf="@+id/viewPagerSlider"
         app:layout_constraintHeight_percent=".09"
         app:layout_constraintStart_toStartOf="@+id/viewPagerSlider"

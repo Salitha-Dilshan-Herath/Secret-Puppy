@@ -2,12 +2,18 @@ package com.iit.secretpuppy.utility.adapters;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
+
+import com.iit.secretpuppy.R;
 
 
 public class CustomPlaceholderSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapter {
@@ -19,12 +25,15 @@ public class CustomPlaceholderSelectedSpinnerAdapter implements SpinnerAdapter, 
     protected int placeholderdDropdownLayout;
     protected LayoutInflater layoutInflater;
 
+    private Typeface font ;
 
     public CustomPlaceholderSelectedSpinnerAdapter(
             SpinnerAdapter spinnerAdapter,
             int placeholderLayout, Context context) {
-
         this(spinnerAdapter, placeholderLayout, -1, context);
+
+        font  = ResourcesCompat.getFont(context, R.font.machinegunk_nyqg);
+
     }
 
 
@@ -44,7 +53,12 @@ public class CustomPlaceholderSelectedSpinnerAdapter implements SpinnerAdapter, 
         if (position == 0) {
             return getNothingSelectedView(parent);
         }
-        return adapter.getView(position - DEFUALT_PLACEHOLDERS_COUNT, null, parent); // Could re-use
+
+        TextView textView = (TextView) adapter.getView(position - DEFUALT_PLACEHOLDERS_COUNT, null, parent);
+        textView.setTypeface(font);
+        textView.setTextColor(Color.WHITE);
+        textView.setTextSize(24);
+        return textView;
         // the convertView if possible.
     }
 
