@@ -26,6 +26,7 @@ import com.iit.secretpuppy.utility.Utility;
 
 public class IdentifyBreedActivity extends AppCompatActivity {
 
+    //MARK: UI Components
     private Spinner     spinnerBreed;
     private ImageView   imgDog;
     private Button      btnNext;
@@ -34,13 +35,16 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     private TextView    txtCountDown;
     private TextView    txtScore;
 
+    //MARK: Instance Variables
     private String randomBreed = "";
     private int stateOfBtnNext = 0;  //0 is user can submit the answer , 1 is user can get next images
     private int progress       = 10;
+    private Boolean idRotated = false;
     private ArrayAdapter<String> adapter;
     private CountDownTimer progressCountDownTimer;
-    private Boolean idRotated = false;
 
+
+    //MARK: Life cycle methods
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +118,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
     }
 
+    //MARK: Set random image to ImageView
     private void loadImage () {
 
         setSpinerValues();
@@ -132,6 +137,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
     }
 
+    //MARK: Load Data to spinner
     private void setSpinerValues() {
 
         //set data to spinner
@@ -146,6 +152,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
     }
 
+    //MARK: Main game logic function
     private void gameFunction (Boolean isButtonTap) {
         if (stateOfBtnNext == 0){
 

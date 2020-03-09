@@ -25,6 +25,7 @@ public class ImageSlideAdapter extends PagerAdapter {
         inflater = LayoutInflater.from(context);
 
     }
+
     @Override
     public void destroyItem(ViewGroup container, int position, Object object){
         container.removeView((View)object);

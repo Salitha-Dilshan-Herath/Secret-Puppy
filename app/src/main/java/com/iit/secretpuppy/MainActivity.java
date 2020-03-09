@@ -14,17 +14,24 @@ import com.iit.secretpuppy.utility.Config;
 
 public class MainActivity extends AppCompatActivity {
 
+    //MARK: UI Components
     private Button btnBreed;
     private Button btnDog;
     private Button btnDogSearch;
     private Button btnLeaderBorad;
     private Switch switchTime;
 
+    //MARK: Life Cycle Method
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setupView();
+    }
+
+    //MARK: Setup main view
+    private void setupView(){
         btnBreed       = findViewById(R.id.btnBreed);
         btnDog         = findViewById(R.id.btnDog);
         btnDogSearch   = findViewById(R.id.btnDogSearch);
@@ -77,6 +84,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }

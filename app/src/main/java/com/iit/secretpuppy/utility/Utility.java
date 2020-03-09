@@ -11,12 +11,14 @@ import android.view.inputmethod.InputMethodManager;
 public class Utility {
 
 
+    //Get drawable using image name
     public static Drawable getDrawable(Context mContext, String name) {
         int resourceId = mContext.getResources().getIdentifier(name, "drawable", mContext.getPackageName());
         return mContext.getResources().getDrawable(resourceId);
     }
 
-    public static Animation flashingAnumation() {
+    //Animation for ImageView
+    public static Animation flashingAnimation() {
 
         Animation anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(100);
@@ -27,11 +29,13 @@ public class Utility {
         return anim;
     }
 
+    //get display breed name using image name
     public static String getShowBreedName (String formattingString) {
 
         return (String) DogCategories.getInstance().getShowBreeds().get(DogCategories.getInstance().getBreeds().indexOf(formattingString));
     }
 
+    //When Touch Outside hide keyboard function
     public static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager =
                 (InputMethodManager) activity.getSystemService(
@@ -40,7 +44,7 @@ public class Utility {
                 activity.getCurrentFocus().getWindowToken(), 0);
     }
 
-
+    //User Score Mange section using SharedPref
     public static void saveLevel1Score(Context context, int score) {
 
         if (getLevel1Score(context) > score) {

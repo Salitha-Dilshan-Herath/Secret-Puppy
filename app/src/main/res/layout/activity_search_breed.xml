@@ -48,7 +48,6 @@
             android:layout_marginRight="8dp"
             android:background="#9C27B0"
             android:text="@android:string/search_go"
-
             android:textSize="24sp"
             app:fontFamily="@font/machinegunk_nyqg"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +80,6 @@
         android:background="#9C27B0"
         android:text="STOP"
         android:textSize="24sp"
-
         app:fontFamily="@font/machinegunk_nyqg"
         app:layout_constraintEnd_toEndOf="@+id/viewPagerSlider"
         app:layout_constraintHeight_percent=".09"

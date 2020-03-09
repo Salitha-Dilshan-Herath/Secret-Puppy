@@ -219,7 +219,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/txtScoreDog2"
+            android:id="@+id/txtScoreDog"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
@@ -247,7 +247,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="#9C27B0"
-                android:text="SUBMIT"
+                android:text="Next"
                 android:textSize="18sp"
                 app:fontFamily="@font/machinegunk_nyqg"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -20,7 +20,7 @@ public class LaunchScreen extends AppCompatActivity {
         wv.getSettings().setLoadWithOverviewMode(true);
         wv.getSettings().setUseWideViewPort(true);
 
-        wv.loadUrl("file:///android_asset/dog_work_2.gif");
+        wv.loadUrl("file:///android_asset/sample.html");
 
         int secondsDelayed = 5;
         new Handler().postDelayed(new Runnable() {
@@ -33,3 +33,5 @@ public class LaunchScreen extends AppCompatActivity {
         }, secondsDelayed * 1000);
     }
 }
+
+

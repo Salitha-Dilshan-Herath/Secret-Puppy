@@ -10,6 +10,7 @@ import com.iit.secretpuppy.R;
 
 public class IdentifyBreedEmtyMessage extends AlertDialog {
 
+    //MARK: UI Components
     private Activity current;
     private Button btnOk;
 
@@ -23,11 +24,12 @@ public class IdentifyBreedEmtyMessage extends AlertDialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.identify_breed_empty_message);
 
-        setupview();
+        setupView();
 
     }
 
-    private void setupview() {
+    //MARK: Setup view
+    private void setupView() {
 
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         btnOk = findViewById(R.id.btnOk);

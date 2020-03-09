@@ -27,11 +27,10 @@ public class CustomSpinnerWithPlaceholderSelectedAdapter implements SpinnerAdapt
 
     private Typeface font ;
 
-    public CustomSpinnerWithPlaceholderSelectedAdapter(
-            SpinnerAdapter spinnerAdapter,
-            int placeholderLayout, Context context) {
+    public CustomSpinnerWithPlaceholderSelectedAdapter(SpinnerAdapter spinnerAdapter, int placeholderLayout, Context context) {
         this(spinnerAdapter, placeholderLayout, -1, context);
 
+        //get font in resources folder
         font  = ResourcesCompat.getFont(context, R.font.machinegunk_nyqg);
 
     }

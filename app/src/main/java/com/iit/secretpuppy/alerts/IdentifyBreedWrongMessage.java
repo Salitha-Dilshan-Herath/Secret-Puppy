@@ -2,7 +2,6 @@ package com.iit.secretpuppy.alerts;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +13,13 @@ import com.iit.secretpuppy.R;
 
 public class IdentifyBreedWrongMessage extends AlertDialog {
 
+    //MARK: UI Components
     private Activity  current;
     private Button    btnOk;
     private TextView  txtCorrect;
     private ImageView imgCorrect;
 
+    //MARK: Instance Variables
     private Drawable correctImage;
 
     public IdentifyBreedWrongMessage(Activity current, Drawable correctImage) {
@@ -33,11 +34,12 @@ public class IdentifyBreedWrongMessage extends AlertDialog {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.identify_breed_wrong_message);
 
-        setupview();
+        setupView();
 
     }
 
-    private void setupview() {
+    //MARK: Setup view
+    private void setupView() {
 
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 

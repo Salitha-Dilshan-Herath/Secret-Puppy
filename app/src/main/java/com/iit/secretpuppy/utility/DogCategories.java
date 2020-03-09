@@ -8,11 +8,12 @@ public class DogCategories {
 
     private static DogCategories singletonObj = new DogCategories();
 
+    // Return Singleton object
     public static DogCategories getInstance(){
         return singletonObj;
     }
 
-    //MARK: Variables
+    //MARK: Instance Variables
     private ArrayList breeds = new ArrayList() {{
         add("goldenretriever");
         add("beagle");
@@ -83,7 +84,21 @@ public class DogCategories {
         Collections.shuffle(breedRandomIndexList);
     }
 
+    //MARK: Get random breed name
+    public String getRandomBreedName() {
 
+        if (currentBreedIndex == breedRandomIndexList.size()) {
+            currentBreedIndex = 0;
+            Collections.shuffle(breedRandomIndexList);
+            System.out.println("reshuffle breeds =================================");
+        }
+
+        String name =  (String) breeds.get( (int) breedRandomIndexList.get(currentBreedIndex++));
+        return name;
+
+    }
+
+    //MARK: Get random Image name for given breed name
     public String getRandomDogImageName(String breed){
 
         if (currentImageIndex == imageRandomIndexList.size()) {
@@ -96,19 +111,5 @@ public class DogCategories {
         return breed + "_" + index;
     }
 
-    public String getRandomBreedName() {
 
-        if (currentBreedIndex == breedRandomIndexList.size()) {
-            currentBreedIndex = 0;
-            Collections.shuffle(breedRandomIndexList);
-            System.out.println("resuffl breeds =================================");
-        }
-
-
-
-        String name =  (String) breeds.get( (int) breedRandomIndexList.get(currentBreedIndex++));
-
-        return name;
-
-    }
 }

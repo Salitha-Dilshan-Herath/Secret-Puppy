@@ -44,6 +44,7 @@ public class SearchBreed extends AppCompatActivity {
         setupView();
     }
 
+    //MARK: Initial View
     private void setupView(){
 
         txtSearch       =  findViewById(R.id.txtSearch);
