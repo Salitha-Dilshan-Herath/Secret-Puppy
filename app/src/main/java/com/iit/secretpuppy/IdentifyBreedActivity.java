@@ -1,11 +1,8 @@
 package com.iit.secretpuppy;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -23,7 +20,7 @@ import com.iit.secretpuppy.alerts.IdentifyBreedEmtyMessage;
 import com.iit.secretpuppy.alerts.IdentifyBreedWrongWithDetailMessage;
 import com.iit.secretpuppy.utility.Config;
 import com.iit.secretpuppy.utility.DogCategories;
-import com.iit.secretpuppy.utility.adapters.CustomPlaceholderSelectedSpinnerAdapter;
+import com.iit.secretpuppy.utility.adapters.CustomSpinnerWithPlaceholderSelectedAdapter;
 import com.iit.secretpuppy.utility.Utility;
 
 
@@ -142,7 +139,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerBreed.setAdapter(
-                new CustomPlaceholderSelectedSpinnerAdapter(
+                new CustomSpinnerWithPlaceholderSelectedAdapter(
                         adapter,
                         R.layout.contact_spinner_row_nothing_selected,
                         this));

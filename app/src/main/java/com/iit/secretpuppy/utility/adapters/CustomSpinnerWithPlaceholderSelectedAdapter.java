@@ -1,5 +1,7 @@
 package com.iit.secretpuppy.utility.adapters;
 
+
+//MARK: References https://stackoverflow.com/questions/867518/how-to-make-an-android-spinner-with-initial-text-select-one
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Color;
@@ -10,24 +12,22 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-
 import androidx.core.content.res.ResourcesCompat;
-
 import com.iit.secretpuppy.R;
 
 
-public class CustomPlaceholderSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapter {
+public class CustomSpinnerWithPlaceholderSelectedAdapter implements SpinnerAdapter, ListAdapter {
 
-    protected static final int DEFUALT_PLACEHOLDERS_COUNT = 1;
+    protected static final int DEFAULT_PLACEHOLDERS_COUNT = 1;
     protected SpinnerAdapter adapter;
     protected Context context;
     protected int placeholderLayout;
-    protected int placeholderdDropdownLayout;
+    protected int placeholderDropdownLayout;
     protected LayoutInflater layoutInflater;
 
     private Typeface font ;
 
-    public CustomPlaceholderSelectedSpinnerAdapter(
+    public CustomSpinnerWithPlaceholderSelectedAdapter(
             SpinnerAdapter spinnerAdapter,
             int placeholderLayout, Context context) {
         this(spinnerAdapter, placeholderLayout, -1, context);
@@ -37,29 +37,27 @@ public class CustomPlaceholderSelectedSpinnerAdapter implements SpinnerAdapter, 
     }
 
 
-    public CustomPlaceholderSelectedSpinnerAdapter(SpinnerAdapter spinnerAdapter,
-                                                   int placeholderLayout, int placeholderdDropdownLayout, Context context) {
+    public CustomSpinnerWithPlaceholderSelectedAdapter(SpinnerAdapter spinnerAdapter,
+                                                       int placeholderLayout, int placeholderDropdownLayout, Context context) {
         this.adapter = spinnerAdapter;
         this.context = context;
         this.placeholderLayout = placeholderLayout;
-        this.placeholderdDropdownLayout = placeholderdDropdownLayout;
+        this.placeholderDropdownLayout = placeholderDropdownLayout;
         layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public final View getView(int position, View convertView, ViewGroup parent) {
-        // This provides the View for the Selected Item in the Spinner, not
-        // the dropdown (unless dropdownView is not set).
+
         if (position == 0) {
             return getNothingSelectedView(parent);
         }
 
-        TextView textView = (TextView) adapter.getView(position - DEFUALT_PLACEHOLDERS_COUNT, null, parent);
+        TextView textView = (TextView) adapter.getView(position - DEFAULT_PLACEHOLDERS_COUNT, null, parent);
         textView.setTypeface(font);
         textView.setTextColor(Color.WHITE);
         textView.setTextSize(24);
         return textView;
-        // the convertView if possible.
     }
 
 
@@ -71,30 +69,30 @@ public class CustomPlaceholderSelectedSpinnerAdapter implements SpinnerAdapter, 
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         // Spinner does not support multiple view types
         if (position == 0) {
-            return placeholderdDropdownLayout == -1 ?
+            return placeholderDropdownLayout == -1 ?
                     new View(context) :
                     getNothingSelectedDropdownView(parent);
         }
 
         // Could re-use the convertView if possible, use setTag...
-        return adapter.getDropDownView(position - DEFUALT_PLACEHOLDERS_COUNT, null, parent);
+        return adapter.getDropDownView(position - DEFAULT_PLACEHOLDERS_COUNT, null, parent);
     }
 
 
     protected View getNothingSelectedDropdownView(ViewGroup parent) {
-        return layoutInflater.inflate(placeholderdDropdownLayout, parent, false);
+        return layoutInflater.inflate(placeholderDropdownLayout, parent, false);
     }
 
     @Override
     public int getCount() {
 
         int count = adapter.getCount();
-        return count == 0 ? 0 : count + DEFUALT_PLACEHOLDERS_COUNT;
+        return count == 0 ? 0 : count + DEFAULT_PLACEHOLDERS_COUNT;
     }
 
     @Override
     public Object getItem(int position) {
-        return position == 0 ? null : adapter.getItem(position - DEFUALT_PLACEHOLDERS_COUNT);
+        return position == 0 ? null : adapter.getItem(position - DEFAULT_PLACEHOLDERS_COUNT);
     }
 
     @Override
@@ -109,7 +107,7 @@ public class CustomPlaceholderSelectedSpinnerAdapter implements SpinnerAdapter, 
 
     @Override
     public long getItemId(int position) {
-        return position >= DEFUALT_PLACEHOLDERS_COUNT ? adapter.getItemId(position - DEFUALT_PLACEHOLDERS_COUNT) : position - DEFUALT_PLACEHOLDERS_COUNT;
+        return position >= DEFAULT_PLACEHOLDERS_COUNT ? adapter.getItemId(position - DEFAULT_PLACEHOLDERS_COUNT) : position - DEFAULT_PLACEHOLDERS_COUNT;
     }
 
     @Override

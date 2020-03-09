@@ -30,7 +30,6 @@ public class ImageSlideAdapter extends PagerAdapter {
         container.removeView((View)object);
     }
 
-
     @Override
     public int getCount() {
         return images.size();
@@ -39,7 +38,7 @@ public class ImageSlideAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup view, int position){
         View myImageLayout  = inflater.inflate(R.layout.image_slide, view, false);
-        ImageView myImage = (ImageView) myImageLayout.findViewById(R.id.imgSlide);
+        ImageView myImage   =  myImageLayout.findViewById(R.id.imgSlide);
         myImage.setImageDrawable(images.get(position));
         view.addView(myImageLayout, 0);
         return myImageLayout;

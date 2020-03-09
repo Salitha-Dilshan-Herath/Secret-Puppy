@@ -27,7 +27,7 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:text="secret puppy "
-        android:textColor="#FBD915"
+        android:textColor="#E91E63"
         android:textSize="50sp"
         app:fontFamily="@font/machinegunk_nyqg"
         app:layout_constraintBottom_toTopOf="@+id/webview1"
