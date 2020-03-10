@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EFE8C7"
-    tools:context=".LaunchScreen">
+    tools:context=".activity.LaunchScreenActivity">
 
     <WebView
         android:id="@+id/webview1"

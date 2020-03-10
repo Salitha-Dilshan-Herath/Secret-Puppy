@@ -1,4 +1,4 @@
-package com.iit.secretpuppy;
+package com.iit.secretpuppy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -14,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.iit.secretpuppy.R;
 import com.iit.secretpuppy.utility.DogCategories;
 import com.iit.secretpuppy.utility.adapters.ImageSlideAdapter;
 import com.iit.secretpuppy.utility.Utility;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SearchBreed extends AppCompatActivity {
+public class SearchBreedActivity extends AppCompatActivity {
 
     //MARK: UI Components
     private AutoCompleteTextView txtSearch;
@@ -102,7 +103,7 @@ public class SearchBreed extends AppCompatActivity {
             return;
         }
 
-        Utility.hideSoftKeyboard(SearchBreed.this);
+        Utility.hideSoftKeyboard(SearchBreedActivity.this);
         //formatting the search string
         searchText  = searchText.replaceAll("\\s+","").toLowerCase();
 
@@ -129,11 +130,11 @@ public class SearchBreed extends AppCompatActivity {
         //create image slider array
         for (int i=0; i<10; i++) {
             String imageName = DogCategories.getInstance().getRandomDogImageName(searchText);
-            imgArray.add(Utility.getDrawable(SearchBreed.this,imageName));
+            imgArray.add(Utility.getDrawable(SearchBreedActivity.this,imageName));
         }
 
 
-        imageSlideAdapter = new ImageSlideAdapter(SearchBreed.this, imgArray);
+        imageSlideAdapter = new ImageSlideAdapter(SearchBreedActivity.this, imgArray);
 
         //create adapter to slider
         viewPagerSlider.setAdapter(imageSlideAdapter);

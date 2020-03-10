@@ -1,13 +1,14 @@
-package com.iit.secretpuppy;
+package com.iit.secretpuppy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.iit.secretpuppy.R;
 import com.iit.secretpuppy.utility.Utility;
 
-public class LeaderBoard extends AppCompatActivity {
+public class LeaderBoardActivity extends AppCompatActivity {
 
     private TextView txtLevel1;
     private TextView txtLevel2;

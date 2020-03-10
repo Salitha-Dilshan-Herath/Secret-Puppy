@@ -1,4 +1,4 @@
-package com.iit.secretpuppy;
+package com.iit.secretpuppy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.iit.secretpuppy.R;
 import com.iit.secretpuppy.alerts.IdentifyBreedCorrectMessage;
 import com.iit.secretpuppy.alerts.IdentifyBreedEmtyMessage;
 import com.iit.secretpuppy.alerts.IdentifyBreedWrongMessage;
@@ -173,6 +174,10 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
 
             IdentifyBreedEmtyMessage identifyBreedEmtyMessage = new IdentifyBreedEmtyMessage(IdentifyDogActivity.this);
             identifyBreedEmtyMessage.show();
+
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(400);
+
             restTimeUp();
 
             return;
@@ -217,6 +222,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
             txtResult.setText("Press Next Button");
             txtResult.setTextColor(Color.WHITE);
 
+            //MARK Ref: https://stackoverflow.com/questions/13950338/how-to-make-an-android-device-vibrate
             //Vibrate phone when give wrong answer
             Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(400);
@@ -246,6 +252,7 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
     //MARK: Setup timer for when enable time mode
     private void setupTimer() {
 
+        //MARK Ref: https://stackoverflow.com/questions/10951978/change-progressbar-color-through-code-only-in-android
         LayerDrawable progressBarDrawable = (LayerDrawable) progressBarTimer.getProgressDrawable();
         final Drawable progressDrawable = progressBarDrawable.getDrawable(1);
         progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.progressGreen), PorterDuff.Mode.SRC_IN);

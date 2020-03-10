@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".LeaderBoard"></activity>
-        <activity android:name=".LaunchScreen">
+        <activity android:name=".activity.LeaderBoardActivity"></activity>
+        <activity android:name=".activity.LaunchScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchBreed" />
-        <activity android:name=".IdentifyDogActivity" />
-        <activity android:name=".IdentifyBreedActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.SearchBreedActivity" />
+        <activity android:name=".activity.IdentifyDogActivity" />
+        <activity android:name=".activity.IdentifyBreedActivity" />
+        <activity android:name=".activity.MainActivity" />
     </application>
 
     <uses-permission android:name="android.permission.VIBRATE"/>

@@ -1,4 +1,4 @@
-package com.iit.secretpuppy;
+package com.iit.secretpuppy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -13,8 +13,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.iit.secretpuppy.R;
 import com.iit.secretpuppy.alerts.IdentifyBreedCorrectMessage;
 import com.iit.secretpuppy.alerts.IdentifyBreedEmtyMessage;
 import com.iit.secretpuppy.alerts.IdentifyBreedWrongWithDetailMessage;
@@ -170,6 +169,10 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                     IdentifyBreedEmtyMessage identifyBreedEmtyMessage = new IdentifyBreedEmtyMessage(IdentifyBreedActivity.this);
                     identifyBreedEmtyMessage.show();
 
+
+                    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    v.vibrate(400);
+
                     restTimeUp();
 
                 }else {
@@ -240,6 +243,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     //MARK: Setup timer for when enable time mode
     private void setupTimer() {
 
+        //MARK Ref: https://stackoverflow.com/questions/10951978/change-progressbar-color-through-code-only-in-android
         LayerDrawable progressBarDrawable = (LayerDrawable) progressBarTimer.getProgressDrawable();
         final Drawable progressDrawable = progressBarDrawable.getDrawable(1);
         progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.progressGreen), PorterDuff.Mode.SRC_IN);

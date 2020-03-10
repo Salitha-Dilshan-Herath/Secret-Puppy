@@ -1,4 +1,4 @@
-package com.iit.secretpuppy;
+package com.iit.secretpuppy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
+import com.iit.secretpuppy.R;
 import com.iit.secretpuppy.utility.Config;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(),SearchBreed.class);
+                Intent intent = new Intent(getApplicationContext(), SearchBreedActivity.class);
                 startActivity(intent);
             }
         });
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(),LeaderBoard.class);
+                Intent intent = new Intent(getApplicationContext(), LeaderBoardActivity.class);
                 startActivity(intent);
             }
         });

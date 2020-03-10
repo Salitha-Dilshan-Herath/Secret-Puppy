@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#4CAF50"
 
-    tools:context=".IdentifyDogActivity">
+    tools:context=".activity.IdentifyDogActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutProgressDog"
