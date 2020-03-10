@@ -3,16 +3,17 @@ package com.iit.secretpuppy;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.iit.secretpuppy.alerts.IdentifyBreedCorrectMessage;
 import com.iit.secretpuppy.alerts.IdentifyBreedEmtyMessage;
@@ -49,7 +50,6 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
 
     private int randomIndex = 0;
     private int selectedIndex = -1;
-    private int submitButtonState = 0;
     private int progress = 10;
     private CountDownTimer progressCountDownTimer;
 
@@ -213,6 +213,10 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
             txtResult.setText("Press Next Button");
             txtResult.setTextColor(Color.WHITE);
 
+            //Vibrate phone when give wrong answer
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(400);
+
         }
 
 
@@ -232,7 +236,6 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         Intent intent = getIntent();
         finish();
         startActivity(intent);
-        submitButtonState = 0;
 
     }
 
@@ -268,7 +271,6 @@ public class IdentifyDogActivity extends AppCompatActivity implements View.OnCli
         txtResult.setText("Press Next Button");
         txtCountDown.setVisibility(View.INVISIBLE);
         btnSubmit.setEnabled(true);
-        submitButtonState = 1;
     }
 
     //MARK: click event function

@@ -2,11 +2,15 @@ package com.iit.secretpuppy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Vibrator;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,7 +43,6 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     private String randomBreed = "";
     private int stateOfBtnNext = 0;  //0 is user can submit the answer , 1 is user can get next images
     private int progress       = 10;
-    private Boolean idRotated = false;
     private ArrayAdapter<String> adapter;
     private CountDownTimer progressCountDownTimer;
 
@@ -73,10 +76,6 @@ public class IdentifyBreedActivity extends AppCompatActivity {
     //MARK: Custom Methods
     private void setupView() {
 
-        if (idRotated) {
-            idRotated = false;
-            return;
-        }
 
         //bind ui component to local variables
         spinnerBreed          = findViewById(R.id.spinner_breeds);
@@ -98,10 +97,13 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
 
         if(Config.IS_TIMER_MODE) {
+
             progressBarTimer.setVisibility(View.VISIBLE);
             txtCountDown.setVisibility(View.VISIBLE);
             setupTimer();
+
         }else {
+
             progressBarTimer.setVisibility(View.GONE);
             txtCountDown.setVisibility(View.GONE);
         }
@@ -163,6 +165,7 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
                     IdentifyBreedEmtyMessage identifyBreedEmtyMessage = new IdentifyBreedEmtyMessage(IdentifyBreedActivity.this);
                     identifyBreedEmtyMessage.show();
+
                     restTimeUp();
 
                 }else {
@@ -203,6 +206,10 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                 identifyBreedWrongMessage.show();
                 txtResult.setText("Press Next Button");
                 txtResult.setTextColor(Color.WHITE);
+
+                //Vibrate phone when give wrong answer
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                v.vibrate(400);
 
             }
 

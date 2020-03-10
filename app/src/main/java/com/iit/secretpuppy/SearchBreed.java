@@ -3,9 +3,11 @@ package com.iit.secretpuppy;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -62,7 +64,7 @@ public class SearchBreed extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Utility.hideSoftKeyboard(SearchBreed.this);
+
                 setupSlider();
             }
         });
@@ -92,9 +94,15 @@ public class SearchBreed extends AppCompatActivity {
         if (searchText == null || searchText.isEmpty()) {
             viewPagerSlider.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(),"Please insert search text", Toast.LENGTH_SHORT).show();
+
+            //Vibrate phone when give wrong answer
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(400);
+
             return;
         }
 
+        Utility.hideSoftKeyboard(SearchBreed.this);
         //formatting the search string
         searchText  = searchText.replaceAll("\\s+","").toLowerCase();
 
@@ -103,6 +111,10 @@ public class SearchBreed extends AppCompatActivity {
 
             viewPagerSlider.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(),"Invalid breed name", Toast.LENGTH_SHORT).show();
+
+            //Vibrate phone when give wrong answer
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(400);
 
             if (imageSlideAdapter != null) {
                 imageSlideAdapter.notifyDataSetChanged();
