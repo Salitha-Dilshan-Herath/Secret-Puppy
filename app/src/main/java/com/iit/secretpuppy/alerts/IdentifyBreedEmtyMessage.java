@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -18,6 +19,7 @@ public class IdentifyBreedEmtyMessage extends AlertDialog {
     private Activity current;
     private Button btnOk;
     private ConstraintLayout constraintLayoutBack;
+    private ImageView imgBack;
 
     public IdentifyBreedEmtyMessage(Activity current) {
         super(current);
@@ -39,7 +41,9 @@ public class IdentifyBreedEmtyMessage extends AlertDialog {
         this.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
         constraintLayoutBack = findViewById(R.id.constraintLayout13);
-        btnOk = findViewById(R.id.btnOk);
+        imgBack              = findViewById(R.id.imageView2);
+        btnOk                 = findViewById(R.id.btnOk);
+
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,5 +55,6 @@ public class IdentifyBreedEmtyMessage extends AlertDialog {
         //shake animation for background view
         final Animation animShake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
         constraintLayoutBack.startAnimation(animShake);
+        imgBack.startAnimation(animShake);
     }
 }

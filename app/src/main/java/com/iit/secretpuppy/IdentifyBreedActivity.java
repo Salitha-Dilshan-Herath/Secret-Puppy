@@ -1,10 +1,14 @@
 package com.iit.secretpuppy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
@@ -235,6 +239,11 @@ public class IdentifyBreedActivity extends AppCompatActivity {
 
     //MARK: Setup timer for when enable time mode
     private void setupTimer() {
+
+        LayerDrawable progressBarDrawable = (LayerDrawable) progressBarTimer.getProgressDrawable();
+        final Drawable progressDrawable = progressBarDrawable.getDrawable(1);
+        progressDrawable.setColorFilter(ContextCompat.getColor(this, R.color.progressGreen), PorterDuff.Mode.SRC_IN);
+
         progressCountDownTimer = new CountDownTimer(10000,1000) {
             @Override
             public void onTick(long l) {
@@ -243,6 +252,11 @@ public class IdentifyBreedActivity extends AppCompatActivity {
                 System.out.println(progress);
                 progressBarTimer.setProgress(progress*100/(10000/1000));
                 txtCountDown.setText( progress  + "");
+
+                if (progress < 5) {
+                    progressDrawable.setColorFilter(ContextCompat.getColor(IdentifyBreedActivity.this, R.color.progressRed), PorterDuff.Mode.SRC_IN);
+
+                }
             }
 
             @Override

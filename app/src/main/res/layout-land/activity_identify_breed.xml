@@ -49,12 +49,13 @@
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:progress="100"
+                android:rotation="-90"
                 android:progressDrawable="@drawable/custom_progressbar_drawable"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent=".3" />
+                app:layout_constraintWidth_percent=".25" />
 
             <TextView
                 android:id="@+id/txtCountDown"

@@ -49,6 +49,7 @@
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:progress="100"
+                android:rotation="-90"
                 android:progressDrawable="@drawable/custom_progressbar_breed_drawable"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
